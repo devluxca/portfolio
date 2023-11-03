@@ -32,10 +32,27 @@ body {
   margin: 0;
   display: flex;
   min-width: 320px;
-  min-height: 600vh;
-  /*background: radial-gradient(100% 100% at 50% 100%, #002B53 0%, #00051A 95.09%);*/
+  min-height: 300vh;
   background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%);
   background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Estilo para o traço da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: #2d4155;
+  /* Cor de fundo da barra de rolagem */
+  border-radius: 6px;
+  /* Raio das bordas da barra de rolagem */
+}
+
+/* Estilo para a área da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #090a0f;
+  /* Cor de fundo da área da barra de rolagem */
 }
 
 @keyframes transitionAnimation {

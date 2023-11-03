@@ -145,7 +145,7 @@
 
 <div
     class="timeline-container mt-10"
-    style="transform: translateX({timelinePosition}px)"
+    style="transform: translateX({timelinePosition}px);transition: transform 1s ease;"
 >
     <Timeline order="horizontal">
         <TimelineItem>
@@ -250,33 +250,35 @@
                         Estes anos não foram apenas de aprendizado, mas também de
                         realização e descoberta de novas paixões.
                     </p>
-                    <div class="flex-col">
-                        <h2 class="text-1xl font-bold mb-2">
-                            Introduções para videos
-                        </h2>
-                        <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/oAo4Lbq3AaM?si=DnPDhmuaA9ed0gnR"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                        />
-                    </div>
-                    <div class="flex-col">
-                        <h2 class="text-1xl font-bold mb-2">
-                            Servidor em Java
-                        </h2>
-                        <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/XkP3nEyBKoo?si=cXS1uI1fikr23RQ5"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                        />
+                    <div class="flex gap-3">
+                        <div class="flex-col">
+                            <h2 class="text-1xl font-bold mb-2">
+                                Introduções para videos
+                            </h2>
+                            <iframe
+                                width="400"
+                                height="285"
+                                src="https://www.youtube.com/embed/oAo4Lbq3AaM?si=DnPDhmuaA9ed0gnR"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            />
+                        </div>
+                        <div class="flex-col">
+                            <h2 class="text-1xl font-bold mb-2">
+                                Servidor em Java
+                            </h2>
+                            <iframe
+                                width="400"
+                                height="285"
+                                src="https://www.youtube.com/embed/XkP3nEyBKoo?si=cXS1uI1fikr23RQ5"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -298,7 +300,7 @@
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1250"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2016-2017</h2>
                 <div class="flex gap-10">
@@ -358,7 +360,7 @@
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1250"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2018-2019</h2>
                 <div class="flex gap-10">
@@ -417,7 +419,7 @@
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2020</h2>
                 <div class="flex gap-5">
@@ -483,7 +485,7 @@
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1250"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2021-05/2022</h2>
                 <div class="flex gap-5">
@@ -595,7 +597,7 @@
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1250"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2024 - Em breve</h2>
             </div>
