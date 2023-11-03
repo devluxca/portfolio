@@ -5,6 +5,7 @@
   import { fade } from "svelte/transition";
 
   let timelinePosition = 0;
+  let targetPosition = 0;
 
   onMount(() => {
     window.addEventListener("scroll", handleScroll);
@@ -19,8 +20,8 @@
 </script>
 
 <h2 class="text-2xl font-bold">Bem-vindo ao meu portfólio</h2>
-<ProfileCard center={timelinePosition <= -10000} />
-{#if timelinePosition >= -9990}
+<ProfileCard center={timelinePosition <= -9999} />
+{#if timelinePosition >= -9997}
   <div transition:fade={{ duration: 200 }}>
     <TimelineExp {timelinePosition} />
   </div>
