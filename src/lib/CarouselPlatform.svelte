@@ -2,15 +2,27 @@
     import { Carousel, Thumbnails } from "flowbite-svelte";
 
     export let images;
+    export let isMobile;
 
     let index = 0;
     let forward = true; // sync animation direction between Thumbnails and Carousel
 </script>
 
-<div class="max-w-xl space-y-2">
-    <Carousel {images} {forward} let:Indicators let:Controls bind:index>
+<div class="md:max-w-4xl max-w-xs space-y-2 carousel-mx">
+    <Carousel {images} {forward} let:Controls bind:index>
         <Controls />
-        <Indicators />
     </Carousel>
     <Thumbnails {images} {forward} bind:index class="bg-transparent" />
 </div>
+
+<style>
+    .carousel-mx {
+        max-width: 600px;
+    }
+
+    @media (max-width: 480px) {
+        .carousel-mx {
+            max-width: 350px;
+        }
+    }
+</style>

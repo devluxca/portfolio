@@ -15,6 +15,7 @@
     import CarouselPlatform from "./CarouselPlatform.svelte";
 
     export let timelinePosition;
+    export let isMobile;
 
     let certificates2017 = [
         {
@@ -144,15 +145,19 @@
 </script>
 
 <div
-    class="timeline-container mt-10"
-    style="transform: translateX({timelinePosition}px);transition: transform 1s ease;"
+    class="timeline-container {isMobile ? 'timeline-mobile' : ''} mt-10"
+    style={isMobile
+        ? ""
+        : `transform: translateX(${timelinePosition}px);transition: transform 1s ease;`}
 >
-    <Timeline order="horizontal">
+    <Timeline order={isMobile ? "vertical" : "horizontal"}>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 rounded-full ring-0 ring-white dark:bg-white-100 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 rounded-full ring-0 ring-white dark:bg-white-100 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <svg
                             class="w-6 h-6 text-primary-600 dark:text-primary-400"
@@ -167,21 +172,23 @@
                     </div>
                     <div
                         style="border-top: 2px dashed #777;"
-                        class="hidden sm:flex w-full border-t border-dashed bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full border-t border-dashed bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-1000"
             >
                 <h2 class="font-bold text-2xl">24/10/2000</h2>
             </div>
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-primary-200 rounded-full ring-0 ring-white dark:bg-primary-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-primary-200 rounded-full ring-0 ring-white dark:bg-primary-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={html5}
@@ -189,12 +196,12 @@
                         />
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-1000"
             >
                 <h2 class="font-bold text-2xl">2012</h2>
                 <p class="max-w-xl">
@@ -210,9 +217,11 @@
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-purple-200 rounded-full ring-0 ring-white dark:bg-purple-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-purple-200 rounded-full ring-0 ring-white dark:bg-purple-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={gamepad}
@@ -220,15 +229,15 @@
                         />
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2013-2014</h2>
-                <div class="flex gap-10">
+                <div class="md:flex xs:flex-col gap-10">
                     <p class="max-w-xl">
                         Durante estes anos, mergulhei de cabeça no fascinante
                         mundo do motion design. Utilizando ferramentas como
@@ -250,13 +259,13 @@
                         Estes anos não foram apenas de aprendizado, mas também de
                         realização e descoberta de novas paixões.
                     </p>
-                    <div class="flex gap-3">
+                    <div class="md:flex xs:flex-col gap-3">
                         <div class="flex-col">
-                            <h2 class="text-1xl font-bold mb-2">
+                            <h2 class="text-1xl font-bold mb-2 mt-5">
                                 Introduções para videos
                             </h2>
                             <iframe
-                                width="400"
+                                width={isMobile ? 300 : 400}
                                 height="285"
                                 src="https://www.youtube.com/embed/oAo4Lbq3AaM?si=DnPDhmuaA9ed0gnR"
                                 title="YouTube video player"
@@ -266,11 +275,11 @@
                             />
                         </div>
                         <div class="flex-col">
-                            <h2 class="text-1xl font-bold mb-2">
+                            <h2 class="text-1xl font-bold mb-2 mt-5">
                                 Servidor em Java
                             </h2>
                             <iframe
-                                width="400"
+                                width={isMobile ? 300 : 400}
                                 height="285"
                                 src="https://www.youtube.com/embed/XkP3nEyBKoo?si=cXS1uI1fikr23RQ5"
                                 title="YouTube video player"
@@ -285,9 +294,11 @@
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-primary-200 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-primary-200 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={certificate}
@@ -295,15 +306,15 @@
                         />
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2016-2017</h2>
-                <div class="flex gap-10">
+                <div class="md:flex xs:flex-col gap-10">
                     <div class="max-w-xl">
                         <p>
                             Neste ano, ampliei consideravelmente minha base de
@@ -338,16 +349,21 @@
                     </div>
                     <div class="flex-col certificates">
                         <h2 class="text-2xl">Certificados</h2>
-                        <CarouselCertificates images={certificates2017} />
+                        <CarouselCertificates
+                            images={certificates2017}
+                            {isMobile}
+                        />
                     </div>
                 </div>
             </div>
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-gray-200 rounded-full ring-0 ring-white dark:bg-gray-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-gray-200 rounded-full ring-0 ring-white dark:bg-gray-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={suitcase}
@@ -355,15 +371,15 @@
                         />
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2018-2019</h2>
-                <div class="flex gap-10">
+                <div class="md:flex xs:flex-col gap-10">
                     <div class="max-w-xl">
                         <p>
                             Iniciei o ano de 2018 ingressando na Audaces como
@@ -391,16 +407,21 @@
                     </div>
                     <div class="flex-col certificates">
                         <h2 class="text-2xl">Certificados</h2>
-                        <CarouselCertificates images={certificates2018} />
+                        <CarouselCertificates
+                            images={certificates2018}
+                            {isMobile}
+                        />
                     </div>
                 </div>
             </div>
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-red-200 rounded-full ring-0 ring-white sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-red-200 rounded-full ring-0 ring-white sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <svg
                             class="w-6 h-6 text-green-600 dark:text-green-400"
@@ -414,15 +435,15 @@
                         >
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2020</h2>
-                <div class="flex gap-5">
+                <div class="md:flex xs:flex-col gap-5">
                     <div class="flex-col max-w-xl w-full">
                         <p class="max-w-xl">
                             Durante 2020, um ano marcado pela pandemia,
@@ -450,7 +471,7 @@
                             ❤️
                         </p>
                     </div>
-                    <div class="flex-col max-w-md mr-6">
+                    <div class="flex-col md:max-w-md max-w-xs mr-6">
                         <Gallery
                             class="gap-3 grid-cols-1"
                             items={[
@@ -470,9 +491,11 @@
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-green-200 rounded-full ring-0 ring-white dark:bg-green-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-green-200 rounded-full ring-0 ring-white dark:bg-green-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={language}
@@ -480,15 +503,15 @@
                         />
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2021-05/2022</h2>
-                <div class="flex gap-5">
+                <div class="md:flex xs:flex-col gap-5">
                     <p class="max-w-xl">
                         Iniciei minha jornada na Yungas como um dos primeiros
                         desenvolvedores, assumindo o papel de <b
@@ -519,18 +542,20 @@
                         apreciadas tanto pela equipe quanto pelos usuários da
                         plataforma.
                     </p>
-                    <div class="flex-col">
+                    <div class="flex-col mt-5 max-w-xs sm:max-w-full">
                         <h2>As imagens a seguir são meramente ilustrativas</h2>
-                        <CarouselPlatform images={imagesYungas} />
+                        <CarouselPlatform images={imagesYungas} {isMobile} />
                     </div>
                 </div>
             </div>
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-yellow-200 rounded-full ring-0 ring-white dark:bg-yellow-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-yellow-200 rounded-full ring-0 ring-white dark:bg-yellow-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={balanceScale}
@@ -538,15 +563,15 @@
                         />
                     </div>
                     <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"
+                        class="hidden sm:flex w-full bg-gray-200 h-1 dark:bg-gray-700"
                     />
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-1250"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-1250"
             >
                 <h2 class="font-bold text-2xl">05/2022-10/2023</h2>
-                <div class="flex gap-5">
+                <div class="md:flex xs:flex-col gap-5">
                     <p class="max-w-xl">
                         Em busca de mais desafios e crescimento profissional,
                         juntei-me à Abstrato como o primeiro desenvolvedor. Com
@@ -578,16 +603,18 @@
                         desânimo.
                     </p>
                     <div class="flex">
-                        <CarouselPlatform images={imagesAbstrato} />
+                        <CarouselPlatform images={imagesAbstrato} {isMobile} />
                     </div>
                 </div>
             </div>
         </TimelineItem>
         <TimelineItem>
             <svelte:fragment slot="icon">
-                <div class="flex items-center">
+                <div class="flex items-center relative">
                     <div
-                        class="flex z-10 justify-center items-center w-6 h-6 bg-orange-200 rounded-full ring-0 ring-white dark:bg-orange-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+                        class="flex {isMobile
+                            ? 'mobile-icon'
+                            : 'desktop-icon'} md:relative z-10 justify-center items-center w-6 h-6 bg-orange-200 rounded-full ring-0 ring-white dark:bg-orange-900 sm:ring-8 dark:ring-gray-900 shrink-0"
                     >
                         <Icon
                             data={clockO}
@@ -597,7 +624,7 @@
                 </div>
             </svelte:fragment>
             <div
-                class="text-left font-normal text-gray-500 dark:text-gray-300 mt-2 w-2000"
+                class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-2000"
             >
                 <h2 class="font-bold text-2xl">2024 - Em breve</h2>
             </div>
@@ -606,9 +633,28 @@
 </div>
 
 <style>
+    .timeline-container.timeline-mobile {
+        position: relative;
+        top: 0px;
+        margin-bottom: 200px;
+    }
+
+    .timeline-container.timeline-mobile .max-w-xl {
+        max-width: 300px;
+    }
     .timeline-container {
         width: 100%;
         position: fixed;
         top: 200px;
+    }
+
+    .mobile-icon {
+        left: -36px;
+        top: 0px;
+        position: absolute;
+    }
+
+    .desktop-icon {
+        left: -12.5px !important;
     }
 </style>

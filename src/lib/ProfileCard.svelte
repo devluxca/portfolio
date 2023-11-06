@@ -25,7 +25,8 @@
 {#if center}
     <div
         transition:fly={{ y: -400, x: -400 }}
-        class="flex items-center top-0 left-0 right-0 bottom-0 m-auto max-w-3xl w-full h-1/4 fixed"
+        style="left: 50%;transform: translateX(-62%);"
+        class="flex items-center top-0 left-0 right-0 bottom-0 m-auto max-w-2xl w-full h-1/4 fixed profile-card-centered"
     >
         <div class="flex-col space-y-5">
             <Icon data={locationArrow} class="h-10 w-10 text-red-500" />
@@ -112,7 +113,10 @@
         </div>
     </div>
 {:else}
-    <div class="flex items-center left-0 fixed" transition:fade>
+    <div
+        class="flex items-center w-full md:left-0 md:fixed profile-card"
+        transition:fade
+    >
         <a
             href="https://www.linkedin.com/in/lucas-simoni-mendes-72b71818b/"
             target="_blank"
@@ -127,7 +131,7 @@
         <div class="text-left">
             <h2 class="text-3xl font-bold">Lucas Mendes</h2>
             <p>Desenvolvedor Full Stack</p>
-            <div class="flex gap-3 mt-4">
+            <div class="flex gap-3 mt-4 social-medias">
                 <a
                     href="https://www.linkedin.com/in/lucas-simoni-mendes-72b71818b/"
                     target="_blank"
@@ -170,6 +174,21 @@
                 </a>
             </div>
         </div>
+        <div class="flex justify-center md:ml-8 curriculum-btn">
+            <GradientButton
+                color="purpleToBlue"
+                outline
+                on:click={downloadCurriculum}
+            >
+                <div class="flex gap-3 items-center">
+                    Baixar currículo
+                    <Icon
+                        data={download}
+                        class="text-white-600 h-6 w-6 cursor-pointer"
+                    />
+                </div>
+            </GradientButton>
+        </div>
     </div>
 {/if}
 
@@ -183,5 +202,28 @@
     }
     .logo:hover {
         filter: drop-shadow(0 0 2em #646cffaa);
+    }
+
+    @media (max-width: 480px) {
+        .profile-card-centered {
+            flex-direction: column;
+            top: -400px;
+            transform: translateX(-50%) !important;
+        }
+
+        .profile-card {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .profile-card h2,
+        .profile-card p {
+            text-align: center !important;
+        }
+        .social-medias {
+            justify-content: center;
+        }
+        .curriculum-btn {
+            margin-top: 20px;
+        }
     }
 </style>

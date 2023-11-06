@@ -1,6 +1,7 @@
 <script>
     import { Carousel } from "flowbite-svelte";
 
+    export let isMobile;
     export let images = [
         {
             alt: "Cosmic timetraveler",
@@ -13,7 +14,7 @@
     let image;
 </script>
 
-<div class="max-w-4xl certificates space-y-4 mt-3">
+<div class="md:max-w-4xl max-w-xs certificates space-y-4 mt-3">
     <Carousel
         {images}
         let:Indicators
@@ -25,7 +26,7 @@
     </Carousel>
 
     <div
-        class="rounded h-10 bg-gray-300 dark:bg-gray-700 dark:text-white p-2 my-2 text-center"
+        class="rounded h-auto bg-gray-300 dark:bg-gray-700 dark:text-white p-2 my-2 text-center"
     >
         {image?.alt}
     </div>
