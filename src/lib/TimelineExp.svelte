@@ -149,7 +149,7 @@
 <svelte:window bind:scrollY />
 
 <div
-    class="timeline-container {isMobile ? 'timeline-mobile' : ''} {scrollY > 20 ? 'scrolled' : ''} mt-10"
+    class="timeline-container {isMobile ? 'timeline-mobile' : ''} {scrollY > 20 && !isMobile ? 'scrolled' : ''} mt-10"
     style={isMobile
         ? ""
         : `transform: translateX(${timelinePosition}px);transition: transform 1s ease;`}
@@ -638,9 +638,22 @@
 
 <style>
     .h-scroll {
-        max-height: 350px;
+        max-height: 500px;
         overflow-y: auto;
         padding-right: 10px;
+    }
+
+    @media (max-width: 1600px) {
+        .h-scroll {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+    }
+    .timeline-container.timeline-mobile .h-scroll {
+        max-height: 100%;
+        padding-right: 0px;
+        overflow-y: hidden;
     }
     .timeline-container.timeline-mobile {
         position: relative;
@@ -652,7 +665,7 @@
         max-width: 300px;
     }
     .timeline-container.scrolled {
-        top: 150px;
+        top: 170px;
         transition: .5s all linear;
     }
     .timeline-container {

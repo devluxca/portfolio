@@ -47,7 +47,7 @@
 
 <h2 class="text-2xl font-bold">Bem-vindo ao meu portfólio</h2>
 <small>Use o scroll do mouse para navegar</small>
-<ProfileCard center={timelinePosition <= -20000} />
+<ProfileCard center={timelinePosition <= -20000} {timelinePosition} {isMobile} />
 {#if timelinePosition > -20000}
   <div transition:fade={{ duration: 200 }}>
     <TimelineExp {timelinePosition} {isMobile} />

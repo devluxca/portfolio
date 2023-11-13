@@ -37,7 +37,14 @@
         .h-scroll {
             max-height: 350px;
             padding-right: 10px;
-            overflow-y: scroll;
+            overflow-y: auto;
+        }   
+    }
+    @media (max-width: 500px) {
+        .h-scroll {
+            max-height: 100%;
+            padding-right: 0px;
+            overflow-y: auto;
         }   
     }
     .certificates {

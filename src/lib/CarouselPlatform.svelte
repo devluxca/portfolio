@@ -5,7 +5,7 @@
     export let isMobile;
 
     let index = 0;
-    let forward = true; // sync animation direction between Thumbnails and Carousel
+    let forward = true;
 </script>
 
 <div class="md:max-w-4xl max-w-xs space-y-2 carousel-mx h-scroll">
@@ -21,6 +21,13 @@
             max-height: 350px;
             padding-right: 10px;
             overflow-y: scroll;
+        }   
+    }
+    @media (max-width: 500px) {
+        .h-scroll {
+            max-height: 100%;
+            padding-right: 0px;
+            overflow-y: auto;
         }   
     }
 
