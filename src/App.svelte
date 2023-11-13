@@ -21,6 +21,7 @@
 
   const handleScroll = () => {
     const scrollY = window.scrollY || window.pageYOffset;
+    const sumInSection = window.innerWidth < 1600 ? 50 : 0
     if (
       isMobile &&
       window.innerHeight + window.scrollY >= document.body.offsetHeight
@@ -31,13 +32,13 @@
     }
     if (isMobile) return;
     if (scrollY < 80) animate(sections[0]);
-    else if (scrollY > 80 && scrollY <= 200) animate(sections[1]);
-    else if (scrollY > 200 && scrollY <= 400) animate(sections[2]);
-    else if (scrollY > 400 && scrollY <= 600) animate(sections[3]);
-    else if (scrollY > 600 && scrollY <= 800) animate(sections[4]);
-    else if (scrollY > 800 && scrollY <= 1000) animate(sections[5]);
-    else if (scrollY > 1000 && scrollY <= 1200) animate(sections[6]);
-    else if (scrollY > 1200 && scrollY <= 1600) animate(sections[7]);
+    else if (scrollY > 80 && scrollY <= 200) animate(sections[1] + sumInSection);
+    else if (scrollY > 200 && scrollY <= 400) animate(sections[2] + sumInSection);
+    else if (scrollY > 400 && scrollY <= 600) animate(sections[3] + sumInSection);
+    else if (scrollY > 600 && scrollY <= 800) animate(sections[4] + sumInSection);
+    else if (scrollY > 800 && scrollY <= 1000) animate(sections[5] + sumInSection);
+    else if (scrollY > 1000 && scrollY <= 1200) animate(sections[6] + sumInSection);
+    else if (scrollY > 1200 && scrollY <= 1600) animate(sections[7] + sumInSection);
     else if (scrollY > 1600) animate(sections[8]);
   };
 </script>
@@ -52,3 +53,10 @@
     <TimelineExp {timelinePosition} {isMobile} />
   </div>
 {/if}
+
+
+<style>
+  h2, small {
+    color: #fff;
+  }
+</style>

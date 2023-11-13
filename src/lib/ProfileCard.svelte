@@ -14,6 +14,8 @@
 
     export let center;
 
+    let scrollY;
+
     const downloadCurriculum = () => {
         const link = document.createElement("a");
         link.href = "/curriculo.pdf";
@@ -22,11 +24,13 @@
     };
 </script>
 
+<svelte:window bind:scrollY />
+
 {#if center}
     <div
         transition:fly={{ y: -400, x: -400 }}
         style="left: 50%;transform: translateX(-62%);"
-        class="flex items-center top-0 left-0 right-0 bottom-0 m-auto max-w-2xl w-full h-1/4 fixed profile-card-centered"
+        class="flex items-center top-0 left-0 right-0 bottom-0 m-auto max-w-2xl w-full h-1/4 md:fixed profile-card-centered"
     >
         <div class="flex-col space-y-5">
             <Icon data={locationArrow} class="h-10 w-10 text-red-500" />
@@ -114,7 +118,7 @@
     </div>
 {:else}
     <div
-        class="flex items-center w-full md:left-0 md:fixed profile-card"
+        class="flex items-center w-full md:left-0 md:fixed profile-card {scrollY > 20 ? 'scrolled' : ''}"
         transition:fade
     >
         <a
@@ -193,6 +197,12 @@
 {/if}
 
 <style>
+    .profile-card.scrolled {
+        top: 0px;
+    }
+    h2, p {
+      color: #fff;
+    }
     .logo {
         width: 150px;
         padding: 1.5em;

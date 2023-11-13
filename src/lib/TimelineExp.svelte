@@ -17,6 +17,8 @@
     export let timelinePosition;
     export let isMobile;
 
+    let scrollY;
+
     let certificates2017 = [
         {
             alt: "Certificado de Hardware e manutenção de computadores",
@@ -144,8 +146,10 @@
     ];
 </script>
 
+<svelte:window bind:scrollY />
+
 <div
-    class="timeline-container {isMobile ? 'timeline-mobile' : ''} mt-10"
+    class="timeline-container {isMobile ? 'timeline-mobile' : ''} {scrollY > 20 ? 'scrolled' : ''} mt-10"
     style={isMobile
         ? ""
         : `transform: translateX(${timelinePosition}px);transition: transform 1s ease;`}
@@ -203,9 +207,9 @@
             <div
                 class="text-left font-normal text-gray-500 dark:text-gray-300 md:mt-2 w-1000"
             >
-                <h2 class="font-bold text-2xl">2012</h2>
-                <p class="max-w-xl">
-                    Em 2012, com 12 anos de idade, mergulhei em um mundo que
+                <h2 class="font-bold text-2xl">2010</h2>
+                <p class="max-w-xl h-scroll">
+                    Em 2010, com 10 anos de idade, mergulhei em um mundo que
                     viria a definir minha trajetória profissional e pessoal. Foi
                     o ano em que tive meu primeiro contato com as linguagens que
                     formam a espinha dorsal da web: <b>HTML</b>, <b>CSS</b> e
@@ -238,7 +242,7 @@
             >
                 <h2 class="font-bold text-2xl">2013-2014</h2>
                 <div class="md:flex xs:flex-col gap-10">
-                    <p class="max-w-xl">
+                    <p class="max-w-xl h-scroll">
                         Durante estes anos, mergulhei de cabeça no fascinante
                         mundo do motion design. Utilizando ferramentas como
                         <b>Cinema 4D</b>, <b>After Effects</b> e ocasionalmente
@@ -315,7 +319,7 @@
             >
                 <h2 class="font-bold text-2xl">2016-2017</h2>
                 <div class="md:flex xs:flex-col gap-10">
-                    <div class="max-w-xl">
+                    <div class="max-w-xl h-scroll">
                         <p>
                             Neste ano, ampliei consideravelmente minha base de
                             conhecimentos. Dediquei-me intensamente à
@@ -380,7 +384,7 @@
             >
                 <h2 class="font-bold text-2xl">2018-2019</h2>
                 <div class="md:flex xs:flex-col gap-10">
-                    <div class="max-w-xl">
+                    <div class="max-w-xl h-scroll">
                         <p>
                             Iniciei o ano de 2018 ingressando na Audaces como
                             jovem aprendiz na área de T.I., onde rapidamente me
@@ -444,7 +448,7 @@
             >
                 <h2 class="font-bold text-2xl">2020</h2>
                 <div class="md:flex xs:flex-col gap-5">
-                    <div class="flex-col max-w-xl w-full">
+                    <div class="flex-col max-w-xl w-full h-scroll">
                         <p class="max-w-xl">
                             Durante 2020, um ano marcado pela pandemia,
                             enfrentei um layoff na Audaces, onde atuava como
@@ -471,7 +475,7 @@
                             ❤️
                         </p>
                     </div>
-                    <div class="flex-col md:max-w-md max-w-xs mr-6">
+                    <div class="flex-col md:max-w-md max-w-xs mr-6 h-scroll">
                         <Gallery
                             class="gap-3 grid-cols-1"
                             items={[
@@ -512,7 +516,7 @@
             >
                 <h2 class="font-bold text-2xl">2021-05/2022</h2>
                 <div class="md:flex xs:flex-col gap-5">
-                    <p class="max-w-xl">
+                    <p class="max-w-xl h-scroll">
                         Iniciei minha jornada na Yungas como um dos primeiros
                         desenvolvedores, assumindo o papel de <b
                             >Full-stack Developer</b
@@ -572,7 +576,7 @@
             >
                 <h2 class="font-bold text-2xl">05/2022-10/2023</h2>
                 <div class="md:flex xs:flex-col gap-5">
-                    <p class="max-w-xl">
+                    <p class="max-w-xl h-scroll">
                         Em busca de mais desafios e crescimento profissional,
                         juntei-me à Abstrato como o primeiro desenvolvedor. Com
                         a responsabilidade de estruturar e criar três
@@ -633,6 +637,11 @@
 </div>
 
 <style>
+    .h-scroll {
+        max-height: 350px;
+        overflow-y: auto;
+        padding-right: 10px;
+    }
     .timeline-container.timeline-mobile {
         position: relative;
         top: 0px;
@@ -641,6 +650,10 @@
 
     .timeline-container.timeline-mobile .max-w-xl {
         max-width: 300px;
+    }
+    .timeline-container.scrolled {
+        top: 150px;
+        transition: .5s all linear;
     }
     .timeline-container {
         width: 100%;

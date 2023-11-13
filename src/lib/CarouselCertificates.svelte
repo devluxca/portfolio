@@ -14,7 +14,7 @@
     let image;
 </script>
 
-<div class="md:max-w-4xl max-w-xs certificates space-y-4 mt-3">
+<div class="md:max-w-4xl max-w-xs certificates space-y-4 mt-3 h-scroll">
     <Carousel
         {images}
         let:Indicators
@@ -33,6 +33,13 @@
 </div>
 
 <style>
+    @media (max-width: 1580px) {
+        .h-scroll {
+            max-height: 350px;
+            padding-right: 10px;
+            overflow-y: scroll;
+        }   
+    }
     .certificates {
         width: 600px;
     }

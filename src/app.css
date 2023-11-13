@@ -34,7 +34,7 @@ body {
   margin: 0;
   display: flex;
   min-width: 320px;
-  min-height: 300vh;
+  min-height: 350vh;
   background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%);
   background-size: cover;
 }
