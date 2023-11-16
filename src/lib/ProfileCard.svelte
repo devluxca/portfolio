@@ -143,7 +143,7 @@
                         alt="Vite Logo"
                     />
                 </a>
-                <div class="text-left">
+                <div class="text-left profile-infos">
                     <h2 class="text-3xl font-bold">Lucas Mendes</h2>
                     <p>Desenvolvedor Full Stack</p>
                     <div class="flex gap-3 mt-4 social-medias">
@@ -402,6 +402,11 @@
     }
     .card-flex {
         display: flex;
+    }
+    .card-flex .profile-infos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .profile-card.scrolled {
         top: 50px;
